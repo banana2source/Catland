@@ -107,3 +107,23 @@ function getResource(name) {
 		}
 	};
 };
+
+function drawPlatforms() {
+	for(let i = 0; i<platform.length; i++) {
+		if(platform[i].visible) {
+			if(platform[i].angle) {
+				ctx.save();
+				
+				ctx.translate(platform[i].x + platform[i].width / 2, platform[i].y + platform[i].height / 2);
+				ctx.rotate(platform[i].angle);
+				ctx.translate(-(platform[i].x + platform[i].width / 2), -(platform[i].y + platform[i].height / 2));
+				
+				ctx.drawImage(platform[i].texture, platform[i].x, platform[i].y, platform[i].width, platform[i].height);
+				
+				ctx.restore();
+			} else {
+			ctx.drawImage(platform[i].texture, platform[i].x, platform[i].y, platform[i].width, platform[i].height);
+			};
+		};
+	};
+};
