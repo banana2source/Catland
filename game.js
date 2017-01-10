@@ -6,7 +6,9 @@
 	  
 	  		x: undefined, y: undefined,
 	  		width: 80, height: 60,
-	  		texture: undefined
+	  		texture: undefined,
+	  
+	  		angle: 0
   	       },
       
       session   	= true,
