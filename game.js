@@ -2,8 +2,12 @@
 // game
 
   let player = {
+	  		isDestroy: false,
 	  
-  		},
+	  		x: undefined, y: undefined,
+	  		width: 80, height: 60,
+	  		texture: undefined
+  	       },
       
       session   	= true,
       _session_hash 	= undefined,
@@ -30,6 +34,9 @@
   
   function Start() {
 	  
+	player.texture = new Image(); //init player image!
+	  player.texture.src = 'sprites/player.png';
+	  
 	loadingprogress = loading();
 	  
 	if(session) {
@@ -44,6 +51,9 @@
 		  
 		  if(stage == '_tutorial') { //load tutorial
 			  load([ [0, 480, 800, 32, 0, getResource('big_grass'), true, full] ]); //[x, y, w, h, a, t, v, o]
+			  
+			  drawPlatforms(); 
+			  
 		  } else if(stage == '_main') { //load multiplayer stage
 			  
 		  };
@@ -132,6 +142,24 @@ function drawPlatforms() {
 			} else {
 			ctx.drawImage(platform[i].texture, platform[i].x, platform[i].y, platform[i].width, platform[i].height);
 			};
+		};
+	};
+};
+
+function drawPlayer = function () {
+	if(!player.isDestroy) {
+		if(player.angle) {
+			ctx.save();
+				
+			ctx.translate(player.x + player.width/2, player.y + player.height/2);
+			ctx.rotate();
+			ctx.translate(-(player.x + player.width/2), -(player.y + player.height/2));
+			
+			ctx.drawImage(player.texture, player.x, player.y, player.width, player.height);	
+			
+			ctx.restore();
+		} else {
+			ctx.drawImage(player.texture, player.x, player.y, player.width, player.height);	
 		};
 	};
 };
