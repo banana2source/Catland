@@ -1,8 +1,8 @@
-// P.S : I know about i can't add comment in .JSON, but i can, sooo.... :D
+P.S : I know about i can't add comment in .JSON, but i can, sooo.... :D
 
 {
- "resource": "sprites", // resource type
+ "resource": "sprites", 
   
-  "from": true // is return => load from server, else => from cache
+  "from": true 
 }
 
