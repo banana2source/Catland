@@ -1,5 +1,4 @@
 'use strict';
-
 // game
 
   let player = {
@@ -97,7 +96,7 @@ function loader() {
 		
 	        resources[i] = [name, img]; //loading :)
 		
-		return i/resources.length * 100; //loadingprogress
+		loadingprogress = i/resources.length * 100; //loadingprogress
 	};
 };
 
