@@ -56,7 +56,7 @@ var loop = function()
 
 	Update(dt);
 
-	requestAnimationFrame(loop); //repeat it again
+	requestAnimationFrame(loop); 
 },
 
 last = performance.now(), step = 1/60, dt = 0, now;
