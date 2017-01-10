@@ -36,7 +36,7 @@
 	  if(session && _session_hash) {
 		  
 		  if(stage == '_tutorial') { //load tutorial
-			  load([ [0, 480, 800, 32, 0, 'sprites/big_grass.png', true, full] ]); //[x, y, w, h, a, t, v, o]
+			  load([ [0, 480, 800, 32, 0, getResource('big_grass'), true, full] ]); //[x, y, w, h, a, t, v, o]
 		  } else if(stage == '_main') { //load multiplayer stage
 			  
 		  };
