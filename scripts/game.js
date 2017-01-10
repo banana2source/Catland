@@ -13,9 +13,11 @@
       friction  = 0.8,
       keys      = [],
       Mouse     = {},
-      isBlock = false, //i get it from db, and i can't show off php-scrips, sorry :(
-      usename = 'name',
-      platform = [];
+      isBlock   = false, //i get it from db, and i can't show off php-scrips, sorry :(
+      usename   = 'name',
+      platform  = [], 
+      resources = [],
+      full      = 100;
     
   
   function Start() {
@@ -31,7 +33,7 @@
 	  if(session && _session_hash) {
 		  
 		  if(stage == '_tutorial') { //load tutorial
-			  
+			  load([ [0, 480, 800, 32, 0, 'sprites/big_grass.png', true, full] ]); //[x, y, w, h, a, t, v, o]
 		  } else if(stage == '_main') { //load multiplayer stage
 			  
 		  };
@@ -65,7 +67,7 @@ requestAnimationFrame(loop);
 
 //engine
 
-function loadMap(config) { //config = [[x, y, w, h, angle, texture, visible, opacity], []]
+function load(config) { //config = [[x, y, w, h, angle, texture, visible, opacity], []]
 	for(let i = 0; i<config.length; i++) {
 		
 	let ln = platform.length;
@@ -80,5 +82,26 @@ function loadMap(config) { //config = [[x, y, w, h, angle, texture, visible, opa
 	platform[ln].visible = config[i][6]
 	platform[ln].opacity = config[i][7]
 
+	};
+};
+
+function loader() {
+	for(let i = 0; i<resources.length; i++) {
+		let img   = new Image(),
+		    name  = resources[i].split('.png')[0];
+		
+		img.src = resources[i];
+		
+	        resources[i] = [name, img]; //loading :)
+		
+		return i/resources.length * 100; //loadingprogress
+	};
+};
+
+function getResource(name) {
+	for(let i = 0; i<resources.length; i++) {
+		if(resources[i][0] == name) {
+			return resources[i][1]; //get img;
+		}
 	};
 };
