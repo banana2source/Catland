@@ -6,21 +6,24 @@
 	  
   		},
       
-      session   = true,
-      _session_hash = undefined,
-      stage     = '_tutorial', 
-      gravity   = 3,
-      friction  = 0.8,
-      keys      = [],
-      Mouse     = {},
-      isBlock   = false, //i get it from db, and i can't show off php-scrips, sorry :(
-      usename   = 'name',
-      platform  = [], 
-      resources = [],
-      full      = 100;
+      session   	= true,
+      _session_hash 	= undefined,
+      stage     	= '_tutorial', 
+      gravity   	= 3,
+      friction  	= 0.8,
+      keys      	= [],
+      Mouse    	 	= {},
+      isBlock   	= false, //i get it from db, and i can't show off php-scrips, sorry :(
+      usename   	= 'name',
+      platform  	= [], 
+      resources 	= ['sprites/big_grass.png'],
+      full      	= 100,
+      loadingprogress	= 0;
     
   
   function Start() {
+	  
+	loadingprogress = loading();
 	  
 	if(session) {
 		_session_hash = String(Date.now()) + String((Math.random() + 1) * username.split('').length); //don't ask me why
@@ -88,7 +91,7 @@ function load(config) { //config = [[x, y, w, h, angle, texture, visible, opacit
 function loader() {
 	for(let i = 0; i<resources.length; i++) {
 		let img   = new Image(),
-		    name  = resources[i].split('.png')[0];
+		    name  = resources[i].split('sprites/')[1].split('.png')[0];
 		
 		img.src = resources[i];
 		
