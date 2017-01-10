@@ -17,7 +17,15 @@
       platform  	= [], 
       resources 	= ['sprites/big_grass.png'],
       full      	= 100,
-      loadingprogress	= 0;
+      loadingprogress	= 0,
+      canvas            = document.createElement('canvas');
+
+      canvas.width    = 800;
+      canvas.height   = 600;
+
+      document.body.appendChild(canvas);
+
+      const ctx = canvas.getContext('2d');
     
   
   function Start() {
