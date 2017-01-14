@@ -59,6 +59,10 @@
 		  } else if(stage == '_main') { //load multiplayer stage
 			  
 		  };
+		  
+		  if(!player.isDestroy) {
+			var collision = new PlatformCollision().status;  
+		  };
 		
 	  };
   };
@@ -108,7 +112,7 @@ function load(config) { //config = [[x, y, w, h, angle, texture, visible, opacit
 };
 
 function loader() {
-	for(let i = 0; i<resources.length; i++) {
+	for (let i = 0; i<resources.length; i++) {
 		let img   = new Image(),
 		    name  = resources[i].split('sprites/')[1].split('.png')[0];
 		
@@ -121,16 +125,16 @@ function loader() {
 };
 
 function getResource(name) {
-	for(let i = 0; i<resources.length; i++) {
-		if(resources[i][0] == name) {
+	for (let i = 0; i<resources.length; i++) {
+		if (resources[i][0] == name) {
 			return resources[i][1]; //get img;
 		}
 	};
 };
 
 function drawPlatforms() {
-	for(let i = 0; i<platform.length; i++) {
-		if(platform[i].visible) {
+	for (let i = 0; i<platform.length; i++) {
+		if (platform[i].visible) {
 			if(platform[i].angle) {
 				ctx.save();
 				
@@ -149,8 +153,8 @@ function drawPlatforms() {
 };
 
 function drawPlayer = function () {
-	if(!player.isDestroy) {
-		if(player.angle) {
+	if (!player.isDestroy) {
+		if (player.angle) {
 			ctx.save();
 				
 			ctx.translate(player.x + player.width/2, player.y + player.height/2);
@@ -163,5 +167,36 @@ function drawPlayer = function () {
 		} else {
 			ctx.drawImage(player.texture, player.x, player.y, player.width, player.height);	
 		};
+	};
+};
+
+function PlatformCollision() {
+	for(let i = 0; i < platforms.length; i++) {
+		let RealX, RealY, RealWidth, RealHeight, 
+		    status = undefined;
+		
+		if(platform[i].angle) {
+			if() {
+			   	status = true;
+			   };
+		} else {
+			if() {
+				RealX = platforms[i].x;
+				RealY = platforms[i].y;
+				RealWidth = platforms[i].width || platforms[i].w;
+				RealHeight = platforms[i].height || platforms[i].h;
+				status = true;	
+			};			
+		};
+		
+		if(i == platforms.length-1 && status == undefined) {
+			status = false;	
+		};
+		
+		return {
+			x: RealX, y: RealY,
+			w: RealWidth, h: RealHeight,
+			getCollision: status
+			};
 	};
 };
